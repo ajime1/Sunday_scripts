@@ -53,6 +53,13 @@ gap.in %>%
   group_by(continent) %>%
   summarize(mean = mean(pop))
 
+# doing something here. not sure what....
+attach(iris)
+View(iris)
 
+#installing another package
+install.packages("tidyr", dependencies = TRUE)
 
-
+library(tidyr)
+# Turn iris dataset from wide into long format
+iris.long <- gather(iris, "Measurement", "Value", 1:4)
