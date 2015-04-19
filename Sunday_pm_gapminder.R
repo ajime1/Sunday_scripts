@@ -54,6 +54,7 @@ gap.in %>%
   summarize(mean = mean(pop))
 
 # doing something here. not sure what....
+data(iris)
 attach(iris)
 View(iris)
 
@@ -63,3 +64,18 @@ install.packages("tidyr", dependencies = TRUE)
 library(tidyr)
 # Turn iris dataset from wide into long format
 iris.long <- gather(iris, "Measurement", "Value", 1:4)
+foo <- gather(iris, "Species", 1:4)
+
+library(dplyr)
+# From http://stackoverflow.com/questions/1181060
+stocks <- data.frame(
+  time = as.Date('2009-01-01') + 0:9,
+  X = rnorm(10, 0, 1),
+  Y = rnorm(10, 0, 2),
+  Z = rnorm(10, 0, 4)
+)
+
+gather(stocks, stock, price, -time)
+
+stocks %>% gather(stock, price, -time)
+
