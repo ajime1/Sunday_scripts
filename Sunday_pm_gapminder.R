@@ -79,3 +79,13 @@ gather(stocks, stock, price, -time)
 
 stocks %>% gather(stock, price, -time)
 
+
+install.packages("tidyr", dependencies=TRUE)
+library("tidyr")
+data(iris)
+attach(iris)
+iris.long<-gather_(iris, "Measurement", "Value", 1:4)
+
+# wouldnt work because plyr wasnt installed, once installed, it works. 
+install.packages("plyr", dependencies= TRUE)
+library("plyr")
