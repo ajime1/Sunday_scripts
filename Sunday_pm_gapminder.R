@@ -3,28 +3,39 @@
 # alyssa.jimenez@UTSouthwestern.edu
 # April 19, 2015
 
+# install an external library- bioconductor website has tons of packages for R- very important
+# installing a package, the load library into working environment
+
+install.packages("dplyr", dependencies = TRUE)
+
+library("dplyr")
+
 # read in data as tab-delimited
 gap.in <-read.table("output/combined_gapMinder.tsv", 
                     sep = "\t", 
                     header= TRUE)
 
-for (row.number in 1:10) {
-  for (col.number in 1:5)
-print (gap.in[row.number,col.number])
-}
+##for (row.number in 1:10) {
+ ## for (col.number in 1:5)
+##print (gap.in[row.number,col.number])}
 
-gap.in[1:10,1:5]
+##gap.in[1:10,1:5]
 
-# custom functions
+# creating custom functions
 
-add.me <- function(x,y){
-  x + y
-}
+##add.me <- function(x,y){
+ ## x + y}
 
-add.me(3,4)
+##add.me(3,4)
 
 
 # had to change ' to nothing in our document then rerun gap.in
+
+
+
+
+
+
 
 
 
