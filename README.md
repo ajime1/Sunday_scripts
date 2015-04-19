@@ -1,3 +1,3 @@
 # Sunday_scripts
 repo for UTA SWC
-ok
+and results for gapminder
