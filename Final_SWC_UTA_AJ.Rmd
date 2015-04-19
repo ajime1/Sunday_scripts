@@ -7,19 +7,43 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-gap.in <-read.table("output/combined_gapMinder.tsv", 
-                    sep = "\t")
-```{r}
-summary(cars)
-```
-```{}
 
-```
-
-You can also embed plots, for example:
 
 ```{r, echo=FALSE}
-plot(cars)
+gap.in <-read.table("output/combined_gapMinder.tsv", 
+                    sep = "\t", 
+                    header= TRUE)
 ```
+
+
+
+```{r, echo=FALSE}
+library(dplyr)
+gap.in %>%
+  filter(country == "Bahrain") %>%
+  select(country, year, gdpPercap) -> data1 
+  plot(data1$year, data1$gdpPercap, xlab= "Year", ylab= "GDP/cap", main= "GDP/year Bahrain")
+
+```
+
+```{r, echo=FALSE}
+gap.in %>%
+  filter(country == "Djibouti") %>%
+  select(country, year, gdpPercap) -> data2
+  plot(data2$year, data2$gdpPercap, xlab= "Year", ylab= "GDP/cap", main= "GDP/year Djibouti")
+
+```
+
+```{r, echo=FALSE}
+gap.in %>%
+  filter(country == "Spain") %>%
+  select(country, year, gdpPercap) -> data3
+  plot(data3$year, data3$gdpPercap, xlab= "Year", ylab= "GDP/cap", main= "GDP/year Spain")
+
+```
+
+Over the past 60 years, Bahrain and Spain have experienced an increase in GDP/year, while the GDP/year of Djibouti has decreased.
+
+
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
