@@ -4,11 +4,11 @@
 # April 19, 2015
 
 # install an external library- bioconductor website has tons of packages for R- very important
-# installing a package, the load library into working environment
+# installing a package, the load library into working environment and depencencies
 
-install.packages("dplyr", dependencies = TRUE)
+#install.packages("dplyr", dependencies = TRUE)
 
-library("dplyr")
+#library("dplyr"), once you run a library to a computer, you can comment it out
 
 # read in data as tab-delimited
 gap.in <-read.table("output/combined_gapMinder.tsv", 
@@ -28,17 +28,30 @@ gap.in <-read.table("output/combined_gapMinder.tsv",
 
 ##add.me(3,4)
 
-
 # had to change ' to nothing in our document then rerun gap.in
 
 
+# %>% is like | in shell
+gap.in %>%
+  filter(pop > 15000000) %>%
+  select(country, year, pop) %>%
+  group_by(country) %>%
+  summarize(min = min(pop))
 
 
+gap.in %>%
+  filter(country == "China") %>%
+  select(country, year, pop) %>%
+  group_by(country) %>%
+  summarize(min = min(pop))
 
+# Challenge: calculate the mean population per continent for years prior to 1990
 
-
-
-
+gap.in %>%
+  select(continent, year, pop) %>%
+  filter(year<1990) %>%
+  group_by(continent) %>%
+  summarize(mean = mean(pop))
 
 
 
